@@ -15,6 +15,9 @@
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="currentUser">
+        <li><a (click)="logout()"><b>Logout</b></a></li>
+      </ul>
     </div><!--/.nav-collapse -->
   </div>
 </nav>

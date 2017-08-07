@@ -12,8 +12,8 @@
       <label for="password" class="sr-only">Password</label>
       <input #password type="password" id="password" class="form-control" placeholder="Password" required="">
       <br>
-      <button class="btn btn-md btn-primary btn-block" (click)="login( username.value, password.value)">Sign in</button>
+      <button class="btn btn-md btn-primary btn-block" (click)="login( username.value, password.value)">Forward</button>
     </form>
   </div>
 </div>
-{{currentUser|json}} {{ usersList | json}}
+{{ usersList | json}}

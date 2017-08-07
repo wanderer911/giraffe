@@ -1,5 +1,4 @@
 ﻿import { Injectable } from '@angular/core';
-//import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject'
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/operator/take";
@@ -20,24 +19,10 @@ export class AuthService {
   login(username: string, password: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.usersObservable.take(1).subscribe(usersList => {
-        /*
-        usersList.forEach(user => {
-          if (user.username == username && user.password == password) {
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            this.user.next(user);//emit current user
-            return resolve('succesfully loged in');
-          }
-          else if (user.username == username && user.password != password) {
-            return reject(new Error('wrong password'));
-          }
-          else {
-          }
-        });
-        */
         for (let i = 0; i <= usersList.length; i++) {
           if (i == usersList.length) {
             //no matches. create new
-			i+=2;//prevent infinite loop
+			      i+=2;//prevent infinite loop
             this.createuser({ 'username': username, 'password': password })
               .then(() => { resolve('user succesfully created'); });
           }
@@ -45,14 +30,14 @@ export class AuthService {
             localStorage.setItem('currentUser', JSON.stringify(usersList[i]));
             this.user.next(usersList[i]);//emit current user
             resolve('succesfully loged in');
-			break;
+			      break;
           }
           else if (usersList[i].username == username && usersList[i].password != password) {
             reject(new Error('wrong password'));
-			break;
+			      break;
           }
           else {
-			  continue;
+			      continue;
           }
         }
       });

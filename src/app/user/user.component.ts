@@ -14,8 +14,8 @@ export class UserComponent implements OnInit {
   constructor(private AS: AuthService) {
     AS.userObservable.subscribe(user => {
       this.currentUser = user;
-      
     });
+
     AS.usersObservable.subscribe(usersList => {
       this.usersList = usersList;
     })
