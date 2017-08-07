@@ -7,10 +7,37 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  public currentUser: any;
+  public error: any;
+  public usersList: any;
 
-  constructor() { }
+  constructor(private AS: AuthService) {
+    AS.userObservable.subscribe(user => {
+      this.currentUser = user;
+      
+    });
+    AS.usersObservable.subscribe(usersList => {
+      this.usersList = usersList;
+    })
+  }
 
   ngOnInit() {
+  }
+
+  
+  login(username, password) {
+    //TODO validation
+
+    console.log(username, password);
+    
+    this.AS.login(username, password)
+      .then(msg => {
+        console.log(msg);
+      }).catch(err => {
+        console.log(err);
+        this.error = err;
+      });
+    return false;
   }
 
 }
