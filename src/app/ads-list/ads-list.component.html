@@ -1,3 +1,24 @@
-<p>
-  ads-list works!
-</p>
+﻿{{currentUser |json}}
+<table class="table table-bordered table-condensed" *ngIf="ads.length>0">
+  <thead>
+    <tr>
+      <th><p>Created</p></th>
+      <th><p>Title</p></th>
+      <th><p>Description</p></th>
+      <th><p>Author</p></th>
+      <th><p>Edit</p></th>
+      <th><p>Delete</p></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ad of ads">
+      <td><p>{{ ad.created_at}}</p></td>
+      <td><p>{{ ad.title}}</p></td>
+      <td><p>{{ ad.description}}</p></td>
+      <td><p>{{ ad.author}}</p></td>
+      <td><button class="btn btn-warning" *ngIf="currentUser.username==ad.author" [routerLink]="['edit/'+ad.$id]">
+        Edit</button></td>
+      <td><button class="btn btn-danger" *ngIf="currentUser.username==ad.author" (click)="delete(ad.$id)"> Delete</button></td>
+    </tr>
+  </tbody>
+</table>

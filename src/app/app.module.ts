@@ -14,7 +14,18 @@ import { AdEditComponent } from './ad-edit/ad-edit.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-    { path: '', component: AdsListComponent },
+  {
+    path: '', component: AdsListComponent
+  },
+  {
+    path: 'edit', component: AdCreateComponent
+  },
+  {
+    path: 'edit/:id', component: AdEditComponent
+  },
+  {
+    path: ':id', component: AdDetailComponent
+  }
 ];
 
 

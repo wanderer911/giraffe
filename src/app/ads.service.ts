@@ -21,13 +21,13 @@ export class AdsService {
           $id: Math.floor((Math.random() * 1000000) + 1),
           created_at: new Date(),
           author: user.username,
-          text: text,
+          title: text,
           description: description,
         }; 
         adsList.push(ad);
         localStorage.setItem('ads', JSON.stringify(adsList));
         this.ads.next(adsList);
-        resolve(ad);
+        resolve(ad.$id);
       });
     });
   }
@@ -66,12 +66,12 @@ export class AdsService {
       this.adsObservable.take(1).subscribe(adsList => {
         let edited;
         let newList = adsList.map(ad => {
-          if (ad.id == id) {
+          if (ad.$id == id) {
             ad.text = text;
             ad.description = description;
             edited = true;
           }
-          return ad;
+          return ad;//return for map
         });
         if (edited) {
           resolve('edited');
