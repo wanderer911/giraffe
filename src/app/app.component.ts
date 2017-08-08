@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +10,8 @@ export class AppComponent {
   public currentUser: any;
   public usersList: any;
 
-  constructor(private AS: AuthService) {
+  constructor(private AS: AuthService,
+    private router: Router) {
     AS.userObservable.subscribe(user => {
       this.currentUser = user;
     });
@@ -22,5 +23,7 @@ export class AppComponent {
 
   logout() {
     this.AS.logout();
+    this.router.navigate(['/']);
+
   }
 }

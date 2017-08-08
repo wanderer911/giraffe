@@ -11,8 +11,8 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a>Home</a></li>
-        <li><a *ngIf="currentUser" [routerLink]="['edit']">Create ad</a></li>
+        <li class="active" ><a [routerLink]="['/']">Home</a></li>
+        <li><a *ngIf="currentUser" [routerLink]="['/edit']">Create ad</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="currentUser">
@@ -24,7 +24,8 @@
 
 <div class="container">
   <app-user *ngIf="!currentUser"></app-user>
-  <router-outlet></router-outlet>
-
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 
 </div><!-- /.container -->

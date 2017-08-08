@@ -61,19 +61,21 @@ export class AdsService {
     })
   }
 
-  editById(id, text, description) {
+  editById(id, title, description) {
     return new Promise((resolve, reject) => {
       this.adsObservable.take(1).subscribe(adsList => {
-        let edited;
+        let edited=false;
         let newList = adsList.map(ad => {
           if (ad.$id == id) {
-            ad.text = text;
+            ad.title = title;
             ad.description = description;
             edited = true;
           }
           return ad;//return for map
         });
         if (edited) {
+          localStorage.setItem('ads', JSON.stringify(newList));
+          this.ads.next(newList);
           resolve('edited');
         }
         else {

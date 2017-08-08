@@ -12,11 +12,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let ad of ads">
-      <td><p>{{ ad.created_at}}</p></td>
-      <td><p>{{ ad.title}}</p></td>
+      <td><p>{{ ad.created_at|date }}</p></td>
+      <td><p><a [routerLink]="['/'+ad.$id]">{{ ad.title}}</a></p></td>
       <td><p>{{ ad.description}}</p></td>
       <td><p>{{ ad.author}}</p></td>
-      <td><button class="btn btn-warning" *ngIf="currentUser.username==ad.author" [routerLink]="['edit/'+ad.$id]">
+      <td><button class="btn btn-warning" *ngIf="currentUser.username==ad.author" [routerLink]="['/edit/'+ad.$id]">
         Edit</button></td>
       <td><button class="btn btn-danger" *ngIf="currentUser.username==ad.author" (click)="delete(ad.$id)"> Delete</button></td>
     </tr>

@@ -1,3 +1,31 @@
-<p>
-  ad-detail works!
-</p>
+﻿<div *ngIf="error" class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  {{error}}
+</div>
+<div *ngIf="ad">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8" >
+        <h1>Author :{{ ad.author}}</h1>
+        <p class="lead">{{ ad.title }}</p>
+        <p>{{ ad.description }}</p>
+      </div>
+      <div class="col-md-4">
+        <div class="well" style="background:#fff">
+          <p>
+            <span class="glyphicon glyphicon-time"></span>
+            Created {{ ad.created_at |date}}
+          </p>
+          <button class="btn btn-warning" *ngIf="currentUser.username==ad.author" [routerLink]="['/edit/'+ad.$id]">
+            Edit
+          </button>
+          <button class="btn btn-danger" *ngIf="currentUser.username==ad.author" (click)="delete(ad.$id)"> Delete</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <p></p>
+</div>
+
