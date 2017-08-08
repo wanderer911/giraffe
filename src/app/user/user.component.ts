@@ -26,10 +26,10 @@ export class UserComponent implements OnInit {
 
   
   login(username, password) {
-    //TODO validation
-
-    console.log(username, password);
-    
+    if (!username || !password) {
+      this.error = "Username and password fields cannot be empty";
+      return false;
+    }
     this.AS.login(username, password)
       .then(msg => {
         console.log(msg);

@@ -17,7 +17,6 @@ export class AdsService {
     return new Promise((resolve, reject) => {
       this.adsObservable.take(1).subscribe(adsList => {
         let ad = {
-          //TODO need to test for different $id and created_at values
           $id: Math.floor((Math.random() * 1000000) + 1),
           created_at: new Date(),
           author: user.username,

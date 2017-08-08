@@ -26,7 +26,10 @@ export class AdCreateComponent implements OnInit {
   }
 
   createAd(text, description) {
-    //TODO validation
+    if (!text || !description) {
+      this.error = "Title and description fields cannot be empty";
+      return false;
+    }
     this.AdsService.create(text, description, this.currentUser).then(ad => {
       this.router.navigate([`/${ad}`]);
     }).catch(err => {

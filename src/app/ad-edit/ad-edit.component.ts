@@ -35,6 +35,10 @@ export class AdEditComponent implements OnInit {
   }
 
   editAd(title, description) {
+    if (!title || !description) {
+      this.error = "Title and description fields cannot be empty";
+      return false;
+    }
     this.AdsService.editById(this.route.snapshot.params['id'], title, description)
       .then(() => {
         this.router.navigate([`/${this.ad.$id}`]);
