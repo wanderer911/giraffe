@@ -5,8 +5,8 @@ import "rxjs/add/operator/take";
 
 @Injectable()
 export class AuthService {
-  private user = new ReplaySubject<any>(1);
-  private users = new ReplaySubject<any>(1);//emit last value to new subsribers
+  private user = new ReplaySubject<any>(1);//emit current user to new and old subsribers
+  private users = new ReplaySubject<any>(1);//emit userslist to new and old subsribers
   public userObservable = this.user.asObservable();
   public usersObservable = this.users.asObservable();
 

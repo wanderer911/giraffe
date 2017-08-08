@@ -45,9 +45,11 @@ export class AdsService {
   deleteById(id) {
     return new Promise((resolve, reject) => {
       this.adsObservable.take(1).subscribe(adsList => {
+        //filter for id
         let filteredList = adsList.filter(ad => {
           return ad.$id != id;
         });
+        //if filtered list< old list. then delete was succesful 
         if (adsList.length > filteredList.length) {
           localStorage.setItem('ads', JSON.stringify(filteredList));
           this.ads.next(filteredList);
@@ -70,7 +72,7 @@ export class AdsService {
             ad.description = description;
             edited = true;
           }
-          return ad;//return for map
+          return ad;   //return for map
         });
         if (edited) {
           localStorage.setItem('ads', JSON.stringify(newList));

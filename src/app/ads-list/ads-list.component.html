@@ -34,3 +34,9 @@
     </tfoot>
   </table>
 </div>
+<div *ngIf="ads.length<1 && currentUser ">
+  <p>Create your first add <a [routerLink]="['/edit']">here</a></p>
+</div>
+<div *ngIf="ads.length<1 && !currentUser ">
+  Please sing in to create your first ad
+</div>
