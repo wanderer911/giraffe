@@ -5,27 +5,28 @@
 </div>
 <div *ngIf="ad">
   <div class="container">
-    <div class="row">
-      <div class="col-md-8" >
-        <h1>Author :{{ ad.author}}</h1>
-        <p class="lead">{{ ad.title }}</p>
-        <p>{{ ad.description }}</p>
-      </div>
-      <div class="col-md-4">
-        <div class="well" style="background:#fff">
-          <p>
-            <span class="glyphicon glyphicon-time"></span>
-            Created {{ ad.created_at |date}}
-          </p>
-          <button class="btn btn-warning" *ngIf="currentUser.username==ad.author" [routerLink]="['/edit/'+ad.$id]">
-            Edit
-          </button>
-          <button class="btn btn-danger" *ngIf="currentUser.username==ad.author" (click)="delete(ad.$id)"> Delete</button>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Author : {{ ad.author}}</h3>
+          <p class="lead" style="word-wrap: break-word;"><b>{{ ad.title }}</b></p>
+          <p style="word-wrap: break-word;">{{ ad.description }}</p>
         </div>
-        
+        <div class="col-md-4">
+          <div class="well" style="background:#fff">
+            <p>
+              <span class="glyphicon glyphicon-time"></span>
+              Created {{ ad.created_at |date}}
+            </p>
+            <button class="btn btn-warning" *ngIf="currentUser.username==ad.author" [routerLink]="['/edit/'+ad.$id]">
+              Edit
+            </button>
+            <button class="btn btn-danger" *ngIf="currentUser.username==ad.author" (click)="delete(ad.$id)"> Delete</button>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-  <p></p>
 </div>
 

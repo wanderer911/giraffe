@@ -1,6 +1,8 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
+//3rd party
+import { DataTableModule } from "angular2-datatable";
 //services
 import { AdsService } from './ads.service';
 import { AuthService } from './auth.service';
@@ -40,8 +42,9 @@ const routes: Routes = [
 
   ],
   imports: [
-      BrowserModule,
-      RouterModule.forRoot(routes)
+    BrowserModule,
+    DataTableModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [AuthService, AdsService],
   bootstrap: [AppComponent]

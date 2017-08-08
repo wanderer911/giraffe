@@ -7,3 +7,20 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+h4 {
+  font-family: -apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,sans-serif;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar-blue {
+  background: #5e81a8;
+}

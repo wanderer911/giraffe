@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+﻿<nav class="navbar navbar-inverse navbar-fixed-top navbar-blue">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -7,13 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Project name</a>
+      <a class="navbar-brand">Giraffe task</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active" ><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/']">Home</a></li>
         <li><a *ngIf="currentUser" [routerLink]="['/edit']">Create ad</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="currentUser">
         <li><a (click)="logout()"><b>Logout</b></a></li>
@@ -24,7 +23,7 @@
 
 <div class="container">
   <app-user *ngIf="!currentUser"></app-user>
-  <div class="container">
+  <div class="container" style="margin:3% 0% 3% 0%;">
     <router-outlet></router-outlet>
   </div>
 

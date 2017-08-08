@@ -1,24 +1,36 @@
-﻿{{currentUser |json}}
-<table class="table table-bordered table-condensed" *ngIf="ads.length>0">
-  <thead>
-    <tr>
-      <th><p>Created</p></th>
-      <th><p>Title</p></th>
-      <th><p>Description</p></th>
-      <th><p>Author</p></th>
-      <th><p>Edit</p></th>
-      <th><p>Delete</p></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let ad of ads">
-      <td><p>{{ ad.created_at|date }}</p></td>
-      <td><p><a [routerLink]="['/'+ad.$id]">{{ ad.title}}</a></p></td>
-      <td><p>{{ ad.description}}</p></td>
-      <td><p>{{ ad.author}}</p></td>
-      <td><button class="btn btn-warning" *ngIf="currentUser.username==ad.author" [routerLink]="['/edit/'+ad.$id]">
-        Edit</button></td>
-      <td><button class="btn btn-danger" *ngIf="currentUser.username==ad.author" (click)="delete(ad.$id)"> Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+﻿<div  *ngIf="ads.length>0">
+  <table class="table table-bordered table-condensed" [mfData]="ads" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+      <tr>
+        <th><p>Created</p></th>
+        <th><p>Title</p></th>
+        <th><p>Description</p></th>
+        <th><p>Author</p></th>
+        <th><p>Edit</p></th>
+        <th><p>Delete</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ad of mf.data">
+        <td><p>{{ ad.created_at|date }}</p></td>
+        <td><p><a [routerLink]="['/'+ad.$id]">{{ ad.title|slice:0:20 }}
+          {{ad.title.length>20?'...':''}}</a></p></td>
+        <td><p>{{ ad.description|slice:0:20 }}{{ad.description.length>20?'...':''}}</p></td>
+        <td><p>{{ ad.author}}</p></td>
+        <td>
+          <button class="btn btn-warning" *ngIf="currentUser.username==ad.author" [routerLink]="['/edit/'+ad.$id]">
+            Edit
+          </button>
+        </td>
+        <td><button class="btn btn-danger" *ngIf="currentUser.username==ad.author" (click)="delete(ad.$id)"> Delete</button></td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="mf.data.length>5">
+      <tr>
+        <td colspan="6">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
