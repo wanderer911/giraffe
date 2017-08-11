@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs/ReplaySubject'
 import { Observable } from 'rxjs/Observable';
+import { User } from './user';
 import "rxjs/add/operator/take";
 
 @Injectable()
@@ -44,9 +45,9 @@ export class AuthService {
     });
   }
 
-  createuser(user):Promise<string> {
+  createuser(user: User):Promise<string> {
     return new Promise((resolve, reject) => {
-      this.usersObservable.take(1).subscribe(usersList => {
+      this.usersObservable.take(1).subscribe((usersList: Array<User>) => {
         usersList.push(user);
         localStorage.setItem('users', JSON.stringify(usersList));
         localStorage.setItem('currentUser', JSON.stringify(user));

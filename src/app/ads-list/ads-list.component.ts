@@ -27,10 +27,10 @@ export class AdsListComponent implements OnInit {
   ngOnInit() {
   }
 
-  delete(id) {
+  delete(id: string):void {
     this.AdsService.deleteById(id).then(() => {
       console.log('deleted');
-    }).catch(err => {
+    }).catch((err: Error) => {
       this.error = err;
     });
   }

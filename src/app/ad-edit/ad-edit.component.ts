@@ -24,7 +24,7 @@ export class AdEditComponent implements OnInit {
     });
     AdsService.getAdById(route.snapshot.params['id']).then(ad => {
       this.ad = ad;
-    }).catch(err => {
+    }).catch((err: Error) => {
       if (err) {
         this.error = err;
       }
@@ -34,7 +34,7 @@ export class AdEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  editAd(title, description) {
+  editAd(title: string, description: string) {
     if (!title || !description) {
       this.error = "Title and description fields cannot be empty";
       return false;

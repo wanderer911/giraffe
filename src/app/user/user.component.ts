@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-user',
@@ -24,17 +25,16 @@ export class UserComponent implements OnInit {
   ngOnInit() {
   }
 
-  
-  login(username, password) {
+
+  login(username: string, password: string): boolean {
     if (!username || !password) {
       this.error = "Username and password fields cannot be empty";
       return false;
     }
     this.AS.login(username, password)
-      .then(msg => {
+      .then((msg:string) => {
         console.log(msg);
-      }).catch(err => {
-        console.log(err);
+      }).catch((err: Error) => {
         this.error = err;
       });
     return false;
