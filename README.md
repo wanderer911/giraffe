@@ -1,4 +1,5 @@
-﻿Test exercise for giraffesoftware written on angular 2
+﻿Test exercise for giraffesoftware written on angular 2.
+
 link to requirements https://docs.google.com/document/d/1F--RB9CwAbq-8PLgAZVkk9bS_aFk3jD7HGzJGyNbRQs/edit
 
 # Giraffe
